@@ -1,150 +1,238 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-<meta charset="utf-8">
+
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Update Harga</title>
+
+<title>Update Harga Produk</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-body {
-  margin:0;
-  font-family: Arial;
-  background:#f4f6f8;
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
 }
 
-/* LOGIN */
-#loginBox {
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  height:100vh;
+body{
+background:#edf3f8;
+color:#222;
+min-height:100vh;
 }
 
-.card {
-  background:white;
-  padding:30px;
-  border-radius:12px;
-  width:300px;
-  box-shadow:0 10px 25px rgba(0,0,0,0.1);
-  text-align:center;
+button{
+border:none;
+cursor:pointer;
+font-family:inherit;
 }
 
-input {
-  width:100%;
-  padding:10px;
-  margin-top:10px;
-  border:1px solid #ddd;
-  border-radius:8px;
+input{
+font-family:inherit;
+outline:none;
 }
 
-button {
-  width:100%;
-  margin-top:10px;
-  padding:10px;
-  border:none;
-  border-radius:8px;
-  cursor:pointer;
-}
-
-.btn-login {
-  background:#007bff;
-  color:white;
-}
-
-.btn-ubah {
-  background:#ff9800;
-  color:white;
-}
-
-/* PRODUK */
-#produk {
-  padding:10px;
-}
-
-.item {
-  background:white;
-  margin:10px;
-  padding:10px;
-  border-radius:10px;
-  box-shadow:0 2px 6px rgba(0,0,0,0.1);
-}
-
-/* POPUP */
-#formEdit {
-  display:none;
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,0.5);
-  justify-content:center;
-  align-items:center;
-}
-
-.popup {
-  background:white;
-  padding:20px;
-  border-radius:12px;
-  width:300px;
-}
-
-body{background:#eef3f8!important;font-family:Arial,sans-serif}
-#produk{max-width:900px;margin:auto;padding:20px}
-.item{display:flex;justify-content:space-between;align-items:center;background:#fff;border-radius:16px;padding:20px;margin:15px 0;box-shadow:0 8px 24px rgba(0,0,0,.08)}
-.tipe{font-size:20px;font-weight:700}
-.label{color:#777;margin-top:10px}
-.harga{font-size:28px;color:#0a7a36;font-weight:700}
-.btn-ubah{width:auto;padding:12px 18px;border-radius:10px}
-
-  .produk-kiri{
+#loginBox{
 display:flex;
-flex-direction:column;
-gap:8px;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+padding:20px;
 }
 
-.produk-kanan{
+.card{
+width:100%;
+max-width:420px;
+background:#fff;
+border-radius:24px;
+padding:40px;
+box-shadow:0 20px 45px rgba(0,0,0,.12);
+text-align:center;
+}
+
+.logo{
+width:80px;
+height:80px;
+margin:auto;
+margin-bottom:20px;
+border-radius:50%;
+background:#2563eb;
 display:flex;
 align-items:center;
+justify-content:center;
+font-size:36px;
+color:#fff;
+}
+
+.card h2{
+font-size:30px;
+margin-bottom:10px;
+color:#2563eb;
+}
+
+.subtitle{
+color:#666;
+margin-bottom:30px;
+line-height:1.6;
+}
+
+input{
+width:100%;
+padding:15px;
+border:1px solid #d9d9d9;
+border-radius:14px;
+font-size:15px;
+margin-bottom:15px;
+transition:.2s;
+}
+
+input:focus{
+border-color:#2563eb;
+box-shadow:0 0 0 4px rgba(37,99,235,.12);
+}
+
+.btn-login{
+width:100%;
+padding:15px;
+border-radius:14px;
+background:#2563eb;
+color:#fff;
+font-size:16px;
+font-weight:600;
+transition:.25s;
+}
+
+.btn-login:hover{
+background:#1d4ed8;
+}
+
+#produk{
+display:none;
+max-width:1100px;
+margin:auto;
+padding:25px;
+}
+
+.header{
+background:#2563eb;
+color:#fff;
+padding:25px;
+border-radius:20px;
+margin-bottom:25px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+box-shadow:0 10px 25px rgba(0,0,0,.12);
+}
+
+.header h2{
+margin-bottom:5px;
+}
+
+#listProduk{
+display:grid;
+gap:18px;
+}
+
+.item{
+background:#fff;
+border-radius:20px;
+padding:22px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+box-shadow:0 8px 25px rgba(0,0,0,.08);
+transition:.25s;
+}
+
+.item:hover{
+transform:translateY(-3px);
 }
 
 .badge{
 display:inline-block;
-width:fit-content;
 padding:5px 12px;
+border-radius:30px;
 background:#dbeafe;
 color:#2563eb;
-border-radius:30px;
 font-size:12px;
-font-weight:bold;
-letter-spacing:.5px;
-}
-
-.harga{
-font-size:32px;
-font-weight:bold;
-color:#16a34a;
-margin-top:4px;
+font-weight:600;
+margin-bottom:10px;
 }
 
 .tipe{
 font-size:22px;
 font-weight:700;
-line-height:1.4;
+margin-bottom:8px;
+}
+
+.label{
+font-size:13px;
+color:#777;
+}
+
+.harga{
+font-size:30px;
+font-weight:700;
+color:#16a34a;
+margin-top:6px;
 }
 
 .btn-ubah{
 background:#2563eb;
 color:#fff;
-padding:14px 24px;
+padding:14px 22px;
 border-radius:12px;
-font-weight:bold;
-transition:.25s;
+font-weight:600;
 }
 
 .btn-ubah:hover{
 background:#1d4ed8;
-transform:translateY(-2px);
+}
+
+#formEdit{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.5);
+justify-content:center;
+align-items:center;
+padding:20px;
+}
+
+.popup{
+width:100%;
+max-width:450px;
+background:#fff;
+padding:30px;
+border-radius:24px;
+box-shadow:0 20px 50px rgba(0,0,0,.2);
+}
+
+.popup h3{
+margin-bottom:20px;
+text-align:center;
+color:#2563eb;
+}
+
+.popup label{
+display:block;
+margin:15px 0 6px;
+font-weight:600;
+}
+
+.btn-batal{
+width:100%;
+margin-top:10px;
+padding:14px;
+background:#ececec;
+border-radius:12px;
 }
 
 @media(max-width:768px){
@@ -152,324 +240,441 @@ transform:translateY(-2px);
 .item{
 flex-direction:column;
 align-items:flex-start;
-}
-
-.produk-kanan{
-width:100%;
-margin-top:20px;
+gap:18px;
 }
 
 .btn-ubah{
 width:100%;
 }
 
-}
-  .header{
-    background:#2563eb;
-    color:white;
-    padding:20px;
-    border-radius:18px;
-    margin-bottom:20px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    box-shadow:0 8px 20px rgba(0,0,0,.12);
-}
-  .popup{
-
-background:white;
-width:100%;
-max-width:430px;
-padding:30px;
-border-radius:22px;
-box-shadow:0 25px 60px rgba(0,0,0,.2);
-
-animation:popupAnim .25s;
-
-}
-
-.popup-title{
-
-text-align:center;
-margin-bottom:25px;
-
-}
-
-.popup-title h2{
-
-margin:10px 0 5px;
-
-}
-
-.popup-title p{
-
-color:#777;
-font-size:14px;
-
-}
-
-.popup-action{
-
-display:flex;
-gap:12px;
-margin-top:25px;
-
-}
-
-.popup-action button{
-
-flex:1;
-
-}
-
-.btn-batal{
-
-background:#efefef;
-color:#444;
-
-}
-
-.btn-batal:hover{
-
-background:#ddd;
-
-}
-
-@keyframes popupAnim{
-
-from{
-
-opacity:0;
-transform:translateY(30px);
-
-}
-
-to{
-
-opacity:1;
-transform:translateY(0);
-
+.header{
+flex-direction:column;
+align-items:flex-start;
+gap:10px;
 }
 
 }
+
 </style>
-</head>
 
+</head>
 <body>
 
-<!-- LOGIN -->
+<!-- ================= LOGIN ================= -->
+
 <div id="loginBox">
 
     <div class="card">
 
-        <div style="font-size:60px;margin-bottom:15px;">🏪</div>
+        <div class="logo">
+            🏪
+        </div>
 
         <h2>UPDATE HARGA</h2>
 
-        <p style="color:#777;margin-bottom:25px;">
+        <div class="subtitle">
             Silakan login menggunakan PIN Sales
-        </p>
+        </div>
 
         <input
-            id="pin"
             type="password"
+            id="pin"
             placeholder="Masukkan PIN">
 
         <button
             class="btn-login"
             onclick="login()">
+
             LOGIN
+
         </button>
 
     </div>
 
 </div>
-<!-- PRODUK -->
+
+<!-- ================= HALAMAN PRODUK ================= -->
+
 <div id="produk">
 
     <div class="header">
 
         <div>
 
-            <h2 style="margin:0;">
+            <h2>
                 📋 Update Harga Produk
             </h2>
 
-            <small style="opacity:.8;">
-                Pilih produk yang akan diubah
-            </small>
+            <div id="namaBrand"
+                 style="opacity:.9;font-size:14px;">
+            </div>
+
+        </div>
+
+        <div>
+
+            <button
+                onclick="logout()"
+                style="
+                background:white;
+                color:#2563eb;
+                padding:12px 18px;
+                border-radius:12px;
+                font-weight:bold;">
+
+                Logout
+
+            </button>
 
         </div>
 
     </div>
+
+
+    <input
+
+        id="search"
+
+        placeholder="🔍 Cari tipe produk..."
+
+        style="
+        margin-bottom:20px;
+        background:white;
+        ">
+
 
     <div id="listProduk"></div>
 
 </div>
 
-<!-- POPUP EDIT -->
+
+<!-- ================= POPUP ================= -->
+
 <div id="formEdit">
 
-<div class="popup">
+    <div class="popup">
 
-<div class="popup-title">
+        <h3>💰 Edit Harga</h3>
 
-<div style="font-size:40px;">💰</div>
+        <label>Harga Lama</label>
 
-<h2>Edit Harga</h2>
+        <input
+            id="hargaLama"
+            disabled>
 
-<p>Silakan ubah harga produk di bawah ini.</p>
+        <label>Harga Baru</label>
 
-</div>
+        <input
+            id="hargaBaru">
 
-<label>Harga Lama</label>
-<input id="hargaLama" disabled>
+        <label>Catatan</label>
 
-<label>Harga Baru</label>
-<input id="hargaBaru" placeholder="Masukkan harga baru">
-
-<label>Catatan</label>
-<input id="catatan" placeholder="Contoh : Promo Weekend">
-
-<div class="popup-action">
-
-<button class="btn-login" onclick="simpan()">
-✔ Simpan
-</button>
-
-<button class="btn-batal" onclick="closeEdit()">
-Batal
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-<script>
-const API = "https://script.google.com/macros/s/AKfycbxKe1KXs3Qigmf7UePOrVfzHt6F3JeXkUMl_sN1-FV4qC5QWGa0EUxgBYJfBbN_8el8LA/exec";
-
-let selectedTipe = "";
-
-/* ================= LOGIN ================= */
-function login() {
-  const pinValue = document.getElementById("pin").value;
-
-  fetch(API + "?action=login&pin=" + pinValue)
-  .then(r => r.json())
-  .then(data => {
-    if (data.success) {
-      localStorage.setItem("brand", data.brand);
-
-      document.getElementById("loginBox").style.display = "none";
-      document.getElementById("produk").style.display = "block";
-
-      loadProduk();
-    } else {
-      alert("PIN salah");
-    }
-  });
-}
-
-
-/* ================= LOAD PRODUK ================= */
-function loadProduk() {
-  const brand = localStorage.getItem("brand");
-
-  fetch(API + "?action=list&brand=" + brand)
-  .then(r => r.json())
-  .then(data => {
-
-    let html = "";
-
-    data.forEach(p => {
-      html += `
-        <div class="item">
-          <div>
-            html += `
-<div class="item">
-
-    <div class="produk-kiri">
-
-        <div class="badge">
-            PRODUK
-        </div>
-
-        <div class="tipe">
-            ${p.tipe}
-        </div>
-
-        <div class="label">
-            Harga Saat Ini
-        </div>
-
-        <div class="harga">
-            Rp ${Number(p.harga).toLocaleString("id-ID")}
-        </div>
-
-    </div>
-
-    <div class="produk-kanan">
+        <input
+            id="catatan">
 
         <button
-            class="btn-ubah"
-            onclick="edit('${p.tipe}','${p.harga}')">
+            class="btn-login"
+            onclick="simpan()">
 
-            ✏️ Ubah Harga
+            ✔ SIMPAN
+
+        </button>
+
+        <button
+            class="btn-batal"
+            onclick="closeEdit()">
+
+            BATAL
 
         </button>
 
     </div>
 
 </div>
-`;
+
+<script>
+
+const API="https://script.google.com/macros/s/AKfycbxKe1KXs3Qigmf7UePOrVfzHt6F3JeXkUMl_sN1-FV4qC5QWGa0EUxgBYJfBbN_8el8LA/exec";
+
+let selectedTipe="";
+let semuaProduk=[];
+  /* ============================
+   LOGIN
+============================ */
+
+function login(){
+
+    const pin=document.getElementById("pin").value.trim();
+
+    if(pin==""){
+        alert("Masukkan PIN terlebih dahulu.");
+        return;
+    }
+
+    fetch(API+"?action=login&pin="+encodeURIComponent(pin))
+
+    .then(r=>r.json())
+
+    .then(data=>{
+
+        if(data.success){
+
+            localStorage.setItem("brand",data.brand);
+
+            document.getElementById("namaBrand").innerHTML=
+            "Brand : <b>"+data.brand+"</b>";
+
+            document.getElementById("loginBox").style.display="none";
+
+            document.getElementById("produk").style.display="block";
+
+            loadProduk();
+
+        }else{
+
+            alert("PIN salah");
+
+        }
+
     });
 
-    dodocument.getElementById("listProduk").innerHTML = html;cument.getElementById("produk").innerHTML = html;
-  });
 }
 
 
-/* ================= EDIT ================= */
-function edit(tipe, harga) {
-  selectedTipe = tipe;
+/* ============================
+   LOGOUT
+============================ */
 
-  document.getElementById("formEdit").style.display = "flex";
-  document.getElementById("hargaLama").value = harga;
-  document.getElementById("hargaBaru").value = harga;
+function logout(){
+
+    if(!confirm("Keluar dari aplikasi?")) return;
+
+    localStorage.removeItem("brand");
+
+    location.reload();
+
 }
 
 
-/* ================= CLOSE POPUP ================= */
-function closeEdit() {
-  document.getElementById("formEdit").style.display = "none";
+/* ============================
+   LOAD PRODUK
+============================ */
+
+function loadProduk(){
+
+    const brand=localStorage.getItem("brand");
+
+    fetch(API+"?action=list&brand="+encodeURIComponent(brand))
+
+    .then(r=>r.json())
+
+    .then(data=>{
+
+        semuaProduk=data;
+
+        tampilkanProduk(data);
+
+    });
+
 }
 
 
-/* ================= SIMPAN ================= */
-function simpan() {
-  const brand = localStorage.getItem("brand");
+/* ============================
+   TAMPILKAN PRODUK
+============================ */
 
-  fetch(API +
-    "?action=update" +
-    "&brand=" + brand +
-    "&tipe=" + selectedTipe +
-    "&harga=" + document.getElementById("hargaBaru").value +
-    "&catatan=" + document.getElementById("catatan").value
-  )
-  .then(r => r.json())
-  .then(res => {
-    if (res.success) {
-      alert("✅ Berhasil update");
-      closeEdit();
-      loadProduk();
-    } else {
-      alert("❌ Gagal update");
+function tampilkanProduk(data){
+
+    let html="";
+
+    data.forEach(p=>{
+
+        html+=`
+
+<div class="item">
+
+    <div>
+
+        <div class="badge">
+
+            PRODUK
+
+        </div>
+
+        <div class="tipe">
+
+            ${p.tipe}
+
+        </div>
+
+        <div class="label">
+
+            Harga Saat Ini
+
+        </div>
+
+        <div class="harga">
+
+            Rp ${Number(p.harga).toLocaleString("id-ID")}
+
+        </div>
+
+    </div>
+
+    <div>
+
+        <button
+
+            class="btn-ubah"
+
+            onclick="edit('${p.tipe}','${p.harga}')">
+
+            ✏ Ubah Harga
+
+        </button>
+
+    </div>
+
+</div>
+
+`;
+
+    });
+
+    document.getElementById("listProduk").innerHTML=html;
+
+}
+  /* ============================
+   EDIT
+============================ */
+
+function edit(tipe,harga){
+
+    selectedTipe=tipe;
+
+    document.getElementById("hargaLama").value=harga;
+    document.getElementById("hargaBaru").value=harga;
+    document.getElementById("catatan").value="";
+
+    document.getElementById("formEdit").style.display="flex";
+
+}
+
+
+/* ============================
+   TUTUP POPUP
+============================ */
+
+function closeEdit(){
+
+    document.getElementById("formEdit").style.display="none";
+
+}
+
+
+/* ============================
+   SIMPAN
+============================ */
+
+function simpan(){
+
+    const brand=localStorage.getItem("brand");
+
+    const harga=document.getElementById("hargaBaru").value.trim();
+
+    const catatan=document.getElementById("catatan").value.trim();
+
+    if(harga==""){
+
+        alert("Harga baru belum diisi.");
+
+        return;
+
     }
-  });
+
+    fetch(
+
+        API+
+
+        "?action=update"+
+
+        "&brand="+encodeURIComponent(brand)+
+
+        "&tipe="+encodeURIComponent(selectedTipe)+
+
+        "&harga="+encodeURIComponent(harga)+
+
+        "&catatan="+encodeURIComponent(catatan)
+
+    )
+
+    .then(r=>r.json())
+
+    .then(res=>{
+
+        if(res.success){
+
+            alert("✅ Harga berhasil diperbarui");
+
+            closeEdit();
+
+            loadProduk();
+
+        }else{
+
+            alert("❌ Gagal memperbarui harga");
+
+        }
+
+    });
+
 }
+
+
+/* ============================
+   SEARCH
+============================ */
+
+document.getElementById("search").addEventListener("input",function(){
+
+    const keyword=this.value.toLowerCase();
+
+    const hasil=semuaProduk.filter(p=>
+
+        p.tipe.toLowerCase().includes(keyword)
+
+    );
+
+    tampilkanProduk(hasil);
+
+});
+
+
+/* ============================
+   AUTO LOGIN
+============================ */
+
+window.onload=function(){
+
+    const brand=localStorage.getItem("brand");
+
+    if(brand){
+
+        document.getElementById("namaBrand").innerHTML=
+        "Brand : <b>"+brand+"</b>";
+
+        document.getElementById("loginBox").style.display="none";
+
+        document.getElementById("produk").style.display="block";
+
+        loadProduk();
+
+    }
+
+};
+
 </script>
 
 </body>
+
 </html>
