@@ -1,5 +1,18 @@
-<input id="pin" placeholder="PIN">
-<button onclick="login()">LOGIN</button>
+<div id="loginBox" style="display:flex;justify-content:center;align-items:center;height:100vh;background:#f4f6f8;">
+  <div style="background:white;padding:30px;border-radius:12px;width:300px;box-shadow:0 10px 25px rgba(0,0,0,0.1);text-align:center;">
+
+    <h2>LOGIN SALES</h2>
+
+    <input id="pin" placeholder="Masukkan PIN"
+      style="width:100%;padding:10px;margin-top:10px;border:1px solid #ddd;border-radius:8px;">
+
+    <button onclick="login()"
+      style="width:100%;margin-top:15px;padding:10px;background:#007bff;color:white;border:none;border-radius:8px;">
+      LOGIN
+    </button>
+
+  </div>
+</div>
 
 <script>
 const API = "https://script.google.com/macros/s/AKfycbxKe1KXs3Qigmf7UePOrVfzHt6F3JeXkUMl_sN1-FV4qC5QWGa0EUxgBYJfBbN_8el8LA/exec";
