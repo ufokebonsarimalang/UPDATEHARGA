@@ -1,0 +1,79 @@
+<input id="pin" placeholder="PIN">
+<button onclick="login()">LOGIN</button>
+
+<script>
+const API = "URL_WEB_APP";
+
+function login() {
+  fetch(API + "?action=login&pin=" + pin.value)
+  .then(r => r.json())
+  .then(data => {
+    if (data.success) {
+      localStorage.setItem("brand", data.brand);
+      loadProduk();
+    } else {
+      alert("PIN salah");
+    }
+  });
+}
+</script>
+<div id="produk"></div>
+
+<script>
+function loadProduk() {
+  const brand = localStorage.getItem("brand");
+
+  fetch(API + "?action=list&brand=" + brand)
+  .then(r => r.json())
+  .then(data => {
+
+    let html = "";
+
+    data.forEach(p => {
+      html += `
+        <div>
+          <b>${p.tipe}</b><br>
+          Harga: ${p.harga}<br>
+          <button onclick="edit('${p.tipe}','${p.harga}')">UBAH</button>
+        </div><hr>
+      `;
+    });
+
+    produk.innerHTML = html;
+  });
+}
+</script>
+<div id="formEdit" style="display:none;">
+  <input id="hargaBaru">
+  <input id="catatan">
+  <button onclick="simpan()">SIMPAN</button>
+</div>
+
+<script>
+let selectedTipe = "";
+
+function edit(tipe, harga) {
+  selectedTipe = tipe;
+  formEdit.style.display = "block";
+  hargaBaru.value = harga;
+}
+
+function simpan() {
+  const brand = localStorage.getItem("brand");
+
+  fetch(API +
+    "?action=update" +
+    "&brand=" + brand +
+    "&tipe=" + selectedTipe +
+    "&harga=" + hargaBaru.value +
+    "&catatan=" + catatan.value
+  )
+  .then(r => r.json())
+  .then(res => {
+    if (res.success) {
+      alert("✅ Berhasil update");
+      loadProduk();
+    }
+  });
+}
+</script>
